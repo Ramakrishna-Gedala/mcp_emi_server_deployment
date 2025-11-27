@@ -1,5 +1,8 @@
+from mcp.server.fastmcp.server import logger
+
+
 def main():
-    print("Hello from mcp-emi-server!")
+    logger.info("Hello from mcp-emi-server!")
 
 
 if __name__ == "__main__":
