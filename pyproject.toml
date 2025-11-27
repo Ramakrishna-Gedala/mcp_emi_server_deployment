@@ -1,0 +1,11 @@
+[project]
+name = "mcp-emi-server"
+version = "0.1.0"
+description = "FastMCP server that forwards EMI calculator requests to a REST backend."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=1.2.0",
+    "python-dotenv>=1.0.0",
+    "requests>=2.32.0",
+]
