@@ -1,0 +1,64 @@
+[emiserver] Starting FastMCP server using transport 'stdio'
+[emiserver] stdio transport unavailable; retrying with SSE...
+[emiserver] Starting FastMCP server using transport 'sse' on 127.0.0.1:8765
+Traceback (most recent call last):
+  File "C:\Users\ramak\AppData\Local\Programs\Python\Python313\Lib\logging\config.py", line 583, in configure
+    formatters[name] = self.configure_formatter(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~^
+                                        formatters[name])
+                                        ^^^^^^^^^^^^^^^^^
+  File "C:\Users\ramak\AppData\Local\Programs\Python\Python313\Lib\logging\config.py", line 693, in configure_formatter
+    result = self.configure_custom(config)
+  File "C:\Users\ramak\AppData\Local\Programs\Python\Python313\Lib\logging\config.py", line 487, in configure_custom
+    result = c(**kwargs)
+  File "C:\Users\ramak\AppData\Local\Programs\Python\Python313\Lib\site-packages\uvicorn\logging.py", line 42, in __init__
+    self.use_colors = sys.stdout.isatty()
+                      ~~~~~~~~~~~~~~~~~^^
+ValueError: I/O operation on closed file
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import sys; sys.stdin.close(); sys.stdout.close(); sys.stderr = open('stderr.log','w'); sys.path.append('src'); from emiserver.emi_calculator import mcp; mcp.run()
+                                                                                                                                                              ~~~~~~~^^
+  File "W:\ITversity\MCP\MCP-Master\code\mcp_emi_server_deployment\src\emiserver\emi_calculator.py", line 58, in run
+    super().run(transport=candidate, mount_path=mount_path)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ramak\AppData\Local\Programs\Python\Python313\Lib\site-packages\mcp\server\fastmcp\server.py", line 284, in run
+    anyio.run(lambda: self.run_sse_async(mount_path))
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ramak\AppData\Local\Programs\Python\Python313\Lib\site-packages\anyio\_core\_eventloop.py", line 74, in run
+    return async_backend.run(func, args, {}, backend_options)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ramak\AppData\Local\Programs\Python\Python313\Lib\site-packages\anyio\_backends\_asyncio.py", line 2325, in run
+    return runner.run(wrapper())
+           ~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\ramak\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\ramak\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\ramak\AppData\Local\Programs\Python\Python313\Lib\site-packages\anyio\_backends\_asyncio.py", line 2313, in wrapper
+    return await func(*args)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\ramak\AppData\Local\Programs\Python\Python313\Lib\site-packages\mcp\server\fastmcp\server.py", line 744, in run_sse_async
+    config = uvicorn.Config(
+        starlette_app,
+    ...<2 lines>...
+        log_level=self.settings.log_level.lower(),
+    )
+  File "C:\Users\ramak\AppData\Local\Programs\Python\Python313\Lib\site-packages\uvicorn\config.py", line 278, in __init__
+    self.configure_logging()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ramak\AppData\Local\Programs\Python\Python313\Lib\site-packages\uvicorn\config.py", line 370, in configure_logging
+    logging.config.dictConfig(self.log_config)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\ramak\AppData\Local\Programs\Python\Python313\Lib\logging\config.py", line 935, in dictConfig
+    dictConfigClass(config).configure()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ramak\AppData\Local\Programs\Python\Python313\Lib\logging\config.py", line 586, in configure
+    raise ValueError('Unable to configure '
+                     'formatter %r' % name) from e
+ValueError: Unable to configure formatter 'default'

@@ -53,7 +53,7 @@ Install `uv` if you do not already have it:
    uv run python emi_calculator.py
    ```
 
-## MCP Client Registration (Claude Desktop example)
+## MCP local Client Registration (Claude Desktop example)
 
 Add to your `claude_desktop_config.json`:
 
@@ -65,6 +65,18 @@ Add to your `claude_desktop_config.json`:
         "mcp_emi_server project path",
         "run",
         "emi_calculator.py"
+      ]
+    },
+```
+
+## MCP published Client Registration (Claude Desktop example)
+```json 
+ "emiMcpServer": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/Ramakrishna-Gedala/mcp-sum-numbers-deployment.git@main",
+        "mcp-server"
       ]
     },
 ```
