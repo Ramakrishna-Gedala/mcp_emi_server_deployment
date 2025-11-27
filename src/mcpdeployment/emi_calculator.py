@@ -10,6 +10,7 @@ import os
 
 from typing import Any, Dict, List
 
+from mcp.server.fastmcp.server import logger
 import requests
 from dotenv import load_dotenv
 from mcp.server.fastmcp import FastMCP
@@ -194,5 +195,5 @@ def calculate_with_prepayment(
 # Start Server
 # ------------------------------------------------------
 if __name__ == "__main__":
-    print("Starting EMI Calculator MCP Server...")
+    logger.info("Starting EMI Calculator MCP Server...")
     mcp.run()
